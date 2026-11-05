@@ -1,6 +1,6 @@
 cask "wgplex-app" do
-  version "0.1.0"
-  sha256 "b485befe0e1697a1d8493035ab28da65e75db9986bc38e4ed8cdd10a322d0992"
+  version "0.1.1"
+  sha256 "464cc57819560535e16d06836e8f08178355128379ed9537ee436eba5d42c64f"
 
   url "https://github.com/mrFokin/wgplex-app/releases/download/v#{version}/Wgplex-#{version}.dmg"
   name "Wgplex"
