@@ -36,6 +36,8 @@ class Wgplex < Formula
     <<~EOS
       Start the daemon as root, keeping your ownership of the formula files:
         sudo brew services start --sudo-service-user=root wgplex
+      Ignore the "brew services start" hint Homebrew prints below: it lacks
+      --sudo-service-user=root.
       Pass --sudo-service-user=root to every start and restart; without it
       brew makes root the owner of the formula files, and later brew upgrade,
       cleanup and uninstall leave files behind or fail.
@@ -59,7 +61,7 @@ class Wgplex < Formula
   end
 
   test do
-    assert_match "wgplex #{version}", shell_output("#{bin}/wgplex version")
+    assert_match(/^wgplex #{Regexp.escape(version.to_s)}$/, shell_output("#{bin}/wgplex version"))
     cp pkgshare/"wgplex.yaml", testpath/"wgplex.yaml"
     chmod 0700, testpath
     chmod 0600, testpath/"wgplex.yaml"
