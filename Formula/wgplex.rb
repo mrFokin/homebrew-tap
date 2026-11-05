@@ -22,14 +22,19 @@ class Wgplex < Formula
     mkdir_p "wgplex", base: :var
     mkdir_p "log/wgplex", base: :var
     mkdir_p "run", base: :var
+    # launchd opens this file before the daemon starts; it must be writable by
+    # the user too, so that a user-level copy of the service (brew services
+    # without sudo) can report "must run as root" and exit 0.
+    touch "log/wgplex/launchd.log", base: :var
+    set_permissions "log/wgplex/launchd.log", "0664", base: :var, recursive: false
   end
 
   service do
     run [opt_bin/"wgplex", "daemon"]
     require_root true
     keep_alive successful_exit: false
-    log_path var/"log/wgplex/wgplex.log"
-    error_log_path var/"log/wgplex/wgplex.log"
+    log_path var/"log/wgplex/launchd.log"
+    error_log_path var/"log/wgplex/launchd.log"
   end
 
   def caveats
