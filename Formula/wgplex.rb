@@ -2,7 +2,7 @@ class Wgplex < Formula
   desc "Run several WireGuard tunnels at once with rule-based routing"
   homepage "https://github.com/mrFokin/wgplex"
   url "https://github.com/mrFokin/wgplex/releases/download/v0.1.0/wgplex-0.1.0-darwin-universal.tar.gz"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "8f563a36bdc039f7b13f532aca1d8f0f4445761924afc8465edf3fa2a6a90a87"
   license "MIT"
 
   depends_on :macos
